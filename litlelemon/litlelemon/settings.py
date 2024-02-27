@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!vy)_*nz)g)^#)=l+ra%l3+tqk$^x5*g$@d23jh80rbs8!lx7c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'reservation',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'litlelemon.urls'
+
+DJOSER={"USER_ID_FIELD":"username"}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 TEMPLATES = [
     {
@@ -70,6 +82,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'litlelemon.wsgi.application'
+
+CSRF_TRUSTED_ORIGINS = ['https://8001-nolulamo-littlelemon-ysd80eh4d7t.ws-eu108.gitpod.io']
 
 
 # Database
