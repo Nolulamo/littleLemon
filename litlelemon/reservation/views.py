@@ -4,7 +4,9 @@ from .models import Menu, Booking
 from .serializers import MenuItemSerializer, BookingSerializer
 from rest_framework.permissions import IsAuthenticated
 
+def index(request):
 
+    return render(request, 'reservation/home.html', {})
 
 class MenuItemsView(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
